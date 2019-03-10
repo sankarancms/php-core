@@ -20,18 +20,18 @@ echo '<!DOCTYPE html>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href=" ' . $CONF->URLROOT . '/dashboard">Dashboard <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href=" ' . $CONF->URLROOT . '/index/about">About</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
+            <a class="nav-link" href=" ' . $CONF->URLROOT . '/users/login">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Register</a>
+            <a class="nav-link" href=" ' . $CONF->URLROOT . '/users/register">Register</a>
           </li>
         </ul>
       </div>
