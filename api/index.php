@@ -4,7 +4,8 @@ try {
     require_once '../config/config.php';
     // Autoload Core Libraries
     spl_autoload_register(function ($className) {
-        require_once '../lib/' . $className . '.php';
+        global $CONF;
+        require_once $CONF->libdir . '/' . $className . '.php';
     });
 } catch (Exception $ex) {
     die($ex->getMessage());

@@ -1,8 +1,8 @@
 <?php
-session_start();
 
 // Flash message helper
 function flash($name = '', $message = '', $class = 'alert alert-success') {
+    session_start();
     if (!empty($name)) {
         //No message, create it
         if (!empty($message) && empty($_SESSION[$name])) {

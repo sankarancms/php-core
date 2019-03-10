@@ -12,10 +12,15 @@ class Users extends Controller {
         $this->userModel = $this->model('User');
     }
 
+    public function index() {
+
+    }
+
     public function register() {
+        global $OUTPUT;
         // Check if logged in
         if ($this->isLoggedIn()) {
-            redirect('posts');
+            $OUTPUT->redirect('dashboard');
         }
 
         // Check if POST
@@ -74,8 +79,9 @@ class Users extends Controller {
                 //Execute
                 if ($this->userModel->register($data)) {
                     // Redirect to login
-                    flash('register_success', 'You are now registered and can log in');
-                    redirect('users/login');
+                    global $OUTPUT;
+                    $OUTPUT->flash('register_success', 'You are now registered and can log in');
+                    $OUTPUT->redirect('users/login');
                 } else {
                     die('Something went wrong');
                 }
@@ -105,9 +111,10 @@ class Users extends Controller {
     }
 
     public function login() {
+        global $OUTPUT;
         // Check if logged in
         if ($this->isLoggedIn()) {
-            redirect('posts');
+            $OUTPUT->redirect('dashboard');
         }
 
         // Check if POST
@@ -179,19 +186,21 @@ class Users extends Controller {
 
     // Create Session With User Info
     public function createUserSession($user) {
+        global $OUTPUT;
         $_SESSION['user_id'] = $user->id;
         $_SESSION['user_email'] = $user->email;
         $_SESSION['user_name'] = $user->name;
-        redirect('posts');
+        $OUTPUT->redirect('dashboard');
     }
 
     // Logout & Destroy Session
     public function logout() {
+        global $OUTPUT;
         unset($_SESSION['user_id']);
         unset($_SESSION['user_email']);
         unset($_SESSION['user_name']);
         session_destroy();
-        redirect('users/login');
+        $OUTPUT->redirect('');
     }
 
     // Check Logged In

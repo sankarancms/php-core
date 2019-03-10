@@ -40,8 +40,10 @@ class User {
 
         //Check Rows
         if ($DB->rowCount() > 0) {
+            $DB->close();
             return true;
         } else {
+            $DB->close();
             return false;
         }
     }
@@ -53,6 +55,7 @@ class User {
         $DB->bind(':email', $email);
 
         $row = $DB->single();
+        $DB->close();
 
         $hashed_password = $row->password;
         if (password_verify($password, $hashed_password)) {

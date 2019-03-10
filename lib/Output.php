@@ -48,4 +48,13 @@ class Output {
         flash($name, $message, $class);
     }
 
+    /**
+     * Redirect
+     */
+    function redirect($page) {
+        global $CONF;
+        require_once($CONF->APPROOT . '/helpers/url.php');
+        redirect($page);
+    }
+
 }
